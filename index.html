@@ -1,0 +1,31 @@
+<!-- AVStream ©2023 Pecacheu. GNU GPL v3.0 -->
+<head>
+<title>AVStream</title>
+<meta name="viewport" content="width=device-width">
+<style>
+body {
+	font:12pt Arial; color:#eee;
+	margin:10px; background:#111;
+}
+h1 {text-align:center}
+video {width:100%; background:#222; border-radius:5px}
+</style>
+<script>
+fetch('/sys').then(r => r.text()).then(n => {
+	tt.textContent=(document.title+=': '+n);
+});
+window.onload = () => {
+	vid.onclick = () => {
+		if(vid.RP) vid.RP=0,vid.src=''; else {
+			vid.RP=1,vid.src="live.webm";
+			vid.play();//.then(() => vid.currentTime=vid.duration);
+		}
+	}
+}
+</script>
+</head>
+<body>
+<h1 id=tt>Loading...</h1>
+<p>Click on the livefeed below to play/pause.</p>
+<video id=vid></video>
+</body>
